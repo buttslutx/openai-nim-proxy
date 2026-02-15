@@ -86,7 +86,7 @@ app.post('/v1/chat/completions', async (req, res) => {
         } else if (modelLower.includes('claude') || modelLower.includes('gemini') || modelLower.includes('70b')) {
           nimModel = 'meta/llama-3.1-70b-instruct';
         } else {
-          nimModel = 'z-ai/glm5';
+          nimModel = 'deepseek-ai/deepseek-v3.2';
         }
       }
     }
