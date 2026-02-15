@@ -22,10 +22,10 @@ const ENABLE_THINKING_MODE = false; // Set to true to enable chat_template_kwarg
 
 // Model mapping (adjust based on available NIM models)
 const MODEL_MAPPING = {
-  'gpt-3.5-turbo': 'deepseek-ai/deepseek-v3.2',
-  'glm': 'z-ai/glm5',
-  'deepseek': 'deepseek-ai/deepseek-v3.2',
-  'gpt-4o': 'z-ai/glm5',
+  'gpt-3.5-turbo': 'nvidia/llama-3.1-nemotron-ultra-253b-v1',
+  'gpt-4': 'z-ai/glm5',
+  'gpt-4-turbo': 'moonshotai/kimi-k2-instruct-0905',
+  'gpt-4o': 'deepseek-ai/deepseek-v3.2',
   'claude-3-opus': 'openai/gpt-oss-120b',
   'claude-3-sonnet': 'openai/gpt-oss-20b',
   'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking' 
@@ -81,10 +81,10 @@ app.post('/v1/chat/completions', async (req, res) => {
       
       if (!nimModel) {
         const modelLower = model.toLowerCase();
-        if (modelLower.includes('glm5') || modelLower.includes('claude-opus') || modelLower.includes('405b')) {
-          nimModel = 'z-ai/glm5';
-        } else if (modelLower.includes('deepseek') || modelLower.includes('gemini') || modelLower.includes('70b')) {
-          nimModel = 'deepseek-ai/deepseek-v3.2';
+        if (modelLower.includes('gpt-4') || modelLower.includes('claude-opus') || modelLower.includes('405b')) {
+          nimModel = 'meta/llama-3.1-405b-instruct';
+        } else if (modelLower.includes('claude') || modelLower.includes('gemini') || modelLower.includes('70b')) {
+          nimModel = 'meta/llama-3.1-70b-instruct';
         } else {
           nimModel = 'z-ai/glm5';
         }
